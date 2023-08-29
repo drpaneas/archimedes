@@ -2,10 +2,11 @@ package cmd
 
 import (
 	"fmt"
+
 	"github.com/drpaneas/archimedes/pkg/cartridge"
 )
 
-func hexdump(rom cartridge.Rom) {
+func Hexdump(rom cartridge.Rom) {
 	var count16 int
 	var tile string
 	for i, v := range rom.Binary {

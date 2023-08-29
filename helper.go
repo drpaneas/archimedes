@@ -3,12 +3,13 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"github.com/drpaneas/archimedes/cmd"
-	"github.com/drpaneas/archimedes/pkg/cartridge"
 	"io"
 	"log"
 	"os"
 	"strings"
+
+	"github.com/drpaneas/archimedes/cmd"
+	"github.com/drpaneas/archimedes/pkg/cartridge"
 )
 
 func isRomMissing() {
@@ -35,12 +36,19 @@ func processUserInput() {
 		}
 	}
 
+	// Parse checking for hexdump -x
+	for _, v := range os.Args {
+		if v == "--hexdump" || v == "-x" {
+			hexdumpFlag = true
+		}
+	}
+
 	var found, hasInfo bool
 	for k, v := range os.Args {
 		if v == "--info-only" || v == "-i" {
 			hasInfo = true
 		}
-		if k != 0 && v != "--debug" && v != "--info-only" && v != "-d" && v != "-i" {
+		if k != 0 && v != "--debug" && v != "--info-only" && v != "-d" && v != "-i" && v != "--hexdump" && v != "-x" {
 			if found {
 				debug(fmt.Sprintf("You you have already provided the ROM file '%s'. What is '%s' then?", file, v))
 				logError("please provide only one ROM file at a time.")
@@ -97,6 +105,7 @@ func help() {
 	fmt.Println("Optional flags:")
 	fmt.Println("\t-i, --only-info: displays ROM header info and quits.")
 	fmt.Println("\t-d, --debug: enables verbosity output (useful for debugging).")
+	fmt.Println("\t-x, --hexdump: displays the ROM in hexdump format.")
 	fmt.Println("\t-h, --help: displays this message.")
 }
 
