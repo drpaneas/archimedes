@@ -2,10 +2,11 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/drpaneas/archimedes/pkg/cartridge"
 	"hash/crc32"
 	"path/filepath"
 	"strings"
+
+	"github.com/drpaneas/archimedes/pkg/cartridge"
 )
 
 const (

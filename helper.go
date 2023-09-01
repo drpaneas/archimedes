@@ -12,6 +12,8 @@ import (
 	"github.com/drpaneas/archimedes/pkg/cartridge"
 )
 
+var found, hasHex, hasInfo bool
+
 func isRomMissing() {
 	if len(os.Args) < 2 {
 		help()
@@ -31,24 +33,21 @@ func processUserInput() {
 
 	// Parse checking
 	for _, v := range os.Args {
+		if v == "--hexdump" || v == "-x" {
+			hasHex = true
+		}
+
+		if v == "--info" || v == "-i" {
+			hasInfo = true
+		}
+
 		if v == "--debug" || v == "-d" {
 			debugFlag = true
 		}
 	}
 
-	// Parse checking for hexdump -x
-	for _, v := range os.Args {
-		if v == "--hexdump" || v == "-x" {
-			hexdumpFlag = true
-		}
-	}
-
-	var found, hasInfo bool
 	for k, v := range os.Args {
-		if v == "--info-only" || v == "-i" {
-			hasInfo = true
-		}
-		if k != 0 && v != "--debug" && v != "--info-only" && v != "-d" && v != "-i" && v != "--hexdump" && v != "-x" {
+		if k != 0 && v != "--debug" && v != "--info" && v != "-d" && v != "-i" && v != "--hexdump" && v != "-x" {
 			if found {
 				debug(fmt.Sprintf("You you have already provided the ROM file '%s'. What is '%s' then?", file, v))
 				logError("please provide only one ROM file at a time.")
@@ -86,9 +85,15 @@ func processUserInput() {
 	if hasInfo {
 		rom := cartridge.Decode(readRom(file))
 		if err := cmd.PrintRomInfo(rom, file); err != nil {
-			fmt.Println("Error:", err)
+			fmt.Printf("\nProblematic ROM: %v\n", err)
 			os.Exit(1)
 		}
+		os.Exit(0)
+	}
+
+	if hasHex {
+		rom := cartridge.Decode(readRom(file))
+		cmd.Hexdump(rom)
 		os.Exit(0)
 	}
 }
@@ -103,7 +108,7 @@ func printLogo() {
 func help() {
 	fmt.Printf("Usage:\n  archimedes [rom file] [optional flags]\n\n")
 	fmt.Println("Optional flags:")
-	fmt.Println("\t-i, --only-info: displays ROM header info and quits.")
+	fmt.Println("\t-i, --info: displays ROM header info and quits.")
 	fmt.Println("\t-d, --debug: enables verbosity output (useful for debugging).")
 	fmt.Println("\t-x, --hexdump: displays the ROM in hexdump format.")
 	fmt.Println("\t-h, --help: displays this message.")
