@@ -17,8 +17,8 @@ const (
 		"\xBB\xBB\x67\x63\x6E\x0E\xEC\xCC\xDD\xDC\x99\x9F\xBB\xB9\x33\x3E"
 )
 
-// parse takes a byte slice representing a Game Boy cartridge binary and returns a ROM struct.
-func parse(b []byte) Rom {
+// Parse takes a byte slice representing a Game Boy cartridge binary and returns a ROM struct.
+func Parse(b []byte) Rom {
 	header := newHeader(b)
 
 	title := string(header.OldTitle)
