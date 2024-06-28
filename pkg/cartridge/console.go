@@ -2,14 +2,17 @@ package cartridge
 
 import "strings"
 
-func GetConsole(file string) (console string) {
-	if strings.HasSuffix(file, "gb") || strings.HasSuffix(file, "GB") {
-		console = "Game Boy"
-	}
+// GetConsole identifies the console type based on the file extension.
+// It supports Game Boy and Game Boy Color files.
+func GetConsole(file string) string {
+	file = strings.ToLower(file) // Normalize the file name to lower case for comparison
 
-	if strings.HasSuffix(file, "gbc") || strings.HasSuffix(file, "GBC") {
-		console = "Game Boy Color"
+	switch {
+	case strings.HasSuffix(file, "gb"):
+		return "Game Boy"
+	case strings.HasSuffix(file, "gbc"):
+		return "Game Boy Color"
+	default:
+		return "Unknown"
 	}
-
-	return console
 }

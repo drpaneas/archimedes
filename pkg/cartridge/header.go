@@ -1,5 +1,6 @@
 package cartridge
 
+// Header represents the structure of a Game Boy ROM header.
 type Header struct {
 	Entrypoint       []byte // 4 bytes
 	Logo             []byte // 48 bytes
@@ -14,28 +15,30 @@ type Header struct {
 	RamSize          byte
 	DestinationCode  byte
 	OldLicenseeCode  byte
-	MaskRomVersion byte
-	Checksum       []byte
-	GlobalChecksum []byte // 2 bytes
+	MaskRomVersion   byte
+	Checksum         []byte // 1 byte
+	GlobalChecksum   []byte // 2 bytes
 }
 
+// newHeader creates a new Header from a byte slice.
+// It assumes the byte slice has the correct structure and size for a Game Boy ROM header.
 func newHeader(b []byte) Header {
 	return Header{
-		Entrypoint:       b[0x0100 : 0x0103+1],
-		Logo:             b[0x0104 : 0x0133+1],
-		NewTitle:         b[0x0134 : 0x013E+1],
-		OldTitle:         b[0x0134 : 0x0143+1],
-		ManufacturerCode: b[0x013F : 0x0142+1],
+		Entrypoint:       b[0x0100:0x0104],
+		Logo:             b[0x0104:0x0134],
+		NewTitle:         b[0x0134:0x013F],
+		OldTitle:         b[0x0134:0x0144],
+		ManufacturerCode: b[0x013F:0x0143],
 		CGBFlag:          b[0x0143],
-		NewLicenseeCode:  b[0x0144 : 0x0145+1],
+		NewLicenseeCode:  b[0x0144:0x0146],
 		SGBFlag:          b[0x0146],
-		CartridgeType:    b[0x147],
+		CartridgeType:    b[0x0147],
 		RomSize:          b[0x0148],
 		RamSize:          b[0x0149],
 		DestinationCode:  b[0x014A],
 		OldLicenseeCode:  b[0x014B],
-		MaskRomVersion:   b[0x014c],
-		Checksum:         []byte{b[0x014d]},
-		GlobalChecksum:   b[0x014e : 0x014f+1],
+		MaskRomVersion:   b[0x014C],
+		Checksum:         []byte{b[0x014D]},
+		GlobalChecksum:   b[0x014E:0x0150],
 	}
 }
