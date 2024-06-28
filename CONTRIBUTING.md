@@ -13,6 +13,40 @@ Please note we have a code of conduct, please follow it in all your interactions
 3. Increase the version numbers in any examples files and the README.md to the new version that this Pull Request would represent. The versioning scheme we use is [SemVer](http://semver.org/).
 4. You may merge the Pull Request in once you have the sign-off of two other developers, or if you do not have permission to do that, you may request the second reviewer to merge it for you.
 
+### Commit Titles
+
+1. Dependency updates: Commits that include dependency updates should follow a pattern that includes `(deps)` in the message, such as:
+
+* chore(deps): update lodash to version 4.17.21
+
+2. New Features: Commits introducing new features should start with feat and optionally include a scope in parentheses. Examples include:
+
+* `feat: add login feature`
+* `feat(auth): implement OAuth2`
+
+3. Security updates: Security-related updates should start with sec and can optionally include a scope. Examples:
+
+* `sec: patch XSS vulnerability`
+* `sec(database): secure connection handling`
+
+4. Bug fixes: Commits fixing bugs should start with fix or refactor and can optionally include a scope. Examples:
+
+* `fix: resolve memory leak issue`
+* `refactor: improve query performance`
+
+5. Documentation updates: For commits that update documentation, the message should start with doc or docs and can optionally include a scope. Examples:
+
+* `docs: update README with new installation instructions`
+* `doc(cli): add usage examples`
+
+6. Build process updates: Commits related to the build process or continuous integration should start with build or ci and can optionally include a scope. Examples:
+
+* `ci: add GitHub Actions workflow for CI`
+* `build: update Dockerfile for optimized image size`
+
+7. Other work: This is a catch-all category for commits that do not fit the above patterns. There's no specific pattern for these, but they would typically not match any of the specified regular expressions and thus fall into this default category.
+
+
 ## Reporting Bugs
 
 Bugs are tracked as GitHub issues. Create an issue and provide the following information:
