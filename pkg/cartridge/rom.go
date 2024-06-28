@@ -32,7 +32,7 @@ func NewRom() Rom {
 
 // Decode parses the given byte slice and returns a Rom instance.
 func Decode(b []byte) Rom {
-	return Parse(b)
+	return parse(b)
 }
 
 // GetRomInfo returns a string describing the ROM size and banking information.
