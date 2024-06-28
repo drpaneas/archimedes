@@ -2,6 +2,7 @@ package cartridge
 
 import "fmt"
 
+// Rom represents the structure of a Game
 type Rom struct {
 	Binary                   []byte // the bytes of the file
 	Header                   Header
@@ -11,8 +12,8 @@ type Rom struct {
 	CartridgeType            string
 	RomSize                  int // Size in bytes
 	RomBanks                 int // Count number of ROM banks
-	RamSize                  int
-	RamBanks                 int
+	RAMSize                  int
+	RAMBanks                 int
 	IsJapanese               bool
 	OldLicenseeCode          []byte
 	HeaderChecksum           string
@@ -36,7 +37,7 @@ func Decode(b []byte) Rom {
 
 // GetRomInfo returns a string describing the ROM size and banking information.
 func GetRomInfo(rom Rom) string {
-	// Pre-calculate common values
+	// Pre-calculate common values to avoid repetition
 	sizeInKiB := rom.RomSize / bytesPerKB
 	sizeInMiB := rom.RomSize / bytesPerMB
 

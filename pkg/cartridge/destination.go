@@ -8,7 +8,7 @@ func getDestinationCode(code byte) bool {
 func IsJapanese(rom Rom) string {
 	s := "No"
 	if rom.IsJapanese {
-		s = "Yes"
+		s = "Yes" // nolint: goconst
 	}
 	return s
 }

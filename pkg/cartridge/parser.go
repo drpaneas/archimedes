@@ -51,7 +51,7 @@ func parse(b []byte) Rom {
 	romSize, romBanks := getRomSizeBank(header.RomSize)
 
 	// Specifies the size of the external RAM in the cartridge (if any).
-	ramSize, ramBanks := getRamSizeBank(header.RamSize)
+	ramSize, ramBanks := getRAMSizeBank(header.RAMSize)
 
 	// Specifies if this version of the game is supposed to be sold in Japan, or anywhere else.
 	isJapanese := getDestinationCode(header.DestinationCode)
@@ -96,8 +96,8 @@ func parse(b []byte) Rom {
 		CartridgeType:            cartridgeType,
 		RomSize:                  romSize,
 		RomBanks:                 romBanks,
-		RamBanks:                 ramBanks,
-		RamSize:                  ramSize,
+		RAMBanks:                 ramBanks,
+		RAMSize:                  ramSize,
 		IsJapanese:               isJapanese,
 		HeaderChecksum:           headerChecksum,
 		IsChecksumVerified:       isVerified,

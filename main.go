@@ -1,3 +1,4 @@
+// Package main is the entry point of the application.
 package main
 
 import (
@@ -23,9 +24,9 @@ const (
 func init() {
 	// Customize flag.Usage to display a more helpful message
 	flag.Usage = func() {
-		fmt.Fprintf(flag.CommandLine.Output(), "\nUsage of %s:\n", os.Args[0])
-		fmt.Fprintf(flag.CommandLine.Output(), "  archimedes [options] rom_file\n")
-		fmt.Fprintf(flag.CommandLine.Output(), "\nOptions:\n")
+		fmt.Fprintf(flag.CommandLine.Output(), "\nUsage of %s:\n", os.Args[0])      //nolint:errcheck
+		fmt.Fprintf(flag.CommandLine.Output(), "  archimedes [options] rom_file\n") //nolint:errcheck
+		fmt.Fprintf(flag.CommandLine.Output(), "\nOptions:\n")                      //nolint:errcheck
 		flag.PrintDefaults()
 	}
 }

@@ -1,3 +1,4 @@
+// Package cmd is the command line interface for the emulator.
 package cmd
 
 import (

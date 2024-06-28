@@ -16,12 +16,12 @@ type SRAMInfo struct {
 
 // getSRAMInfo returns the size of the save RAM in KB and the number of banks.
 func getSRAMInfo(rom Rom) (info SRAMInfo) {
-	if rom.RamSize == 0 {
+	if rom.RAMSize == 0 {
 		return SRAMInfo{SizeKB: 0, NumBanks: 0}
 	}
 	return SRAMInfo{
-		SizeKB:   rom.RamSize / bytesPerKB,
-		NumBanks: rom.RamBanks,
+		SizeKB:   rom.RAMSize / bytesPerKB,
+		NumBanks: rom.RAMBanks,
 	}
 }
 

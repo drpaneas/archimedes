@@ -12,7 +12,7 @@ type Header struct {
 	SGBFlag          byte
 	CartridgeType    byte
 	RomSize          byte
-	RamSize          byte
+	RAMSize          byte
 	DestinationCode  byte
 	OldLicenseeCode  byte
 	MaskRomVersion   byte
@@ -34,7 +34,7 @@ func newHeader(b []byte) Header {
 		SGBFlag:          b[0x0146],
 		CartridgeType:    b[0x0147],
 		RomSize:          b[0x0148],
-		RamSize:          b[0x0149],
+		RAMSize:          b[0x0149],
 		DestinationCode:  b[0x014A],
 		OldLicenseeCode:  b[0x014B],
 		MaskRomVersion:   b[0x014C],
