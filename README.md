@@ -26,7 +26,7 @@ Clone the repository and build the project:
 ```sh
 git clone https://github.com/yourusername/archimedes.git
 cd archimedes
-go build -o archimedes ./cmd
+go build
 ```
 
 ## Usage
