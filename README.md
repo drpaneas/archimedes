@@ -1,10 +1,37 @@
+![logo.png](logo.png)
+
 # Archimedes
 
 Archimedes is a command-line tool designed for Game Boy developers and enthusiasts. It provides detailed insights into Game Boy ROM files, including hex dumps, licensing information, entry points, and more. Whether you're debugging your latest header for your game or just curious about the internals of classic Game Boy titles, Archimedes is your go-to utility.
 
-## Dedication
+```shell
+# For example:
+Processing ROM file: roms/mario.gb
 
-This project is lovingly dedicated and named after my grandpa, who bought me my first DMG Game Boy. His gift sparked a lifelong passion for gaming and technology that ultimately led to the creation of Archimedes. Thank you, Grandpa, for setting me on this path.
+== File Information ==
+ Filename          : mario.gb
+ Filesize          : 64 KB
+ Checksum (CRC)    : 2C27EC70
+
+== Header Information ==
+ Title             : SUPER MARIOLAND
+ Console           : Game Boy
+ Publisher         : Nintendo
+ Cartridge Type    : MBC1
+ Super Gameboy     : No
+ Color Gameboy     : No
+ Unofficial Colors : No
+ Rom Size          : 64 KiB (4 banks)
+ SRAM Save Size    : None
+ Is Japanese       : Yes
+ Game Version      : 1
+ Entry Point       : 00, C3, 50, 01 - (nop, jp $0150)
+ Global Checksum   : 0x5ECF (Verified) ✓
+
+== Boot Checks ==
+ Header Checksum   : 0x9D (Verified) ✓
+ Official Logo     : Verified ✓
+```
 
 ## Features
 
@@ -57,3 +84,7 @@ Contributions are welcome! Please feel free to submit pull requests or open issu
 
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Dedication
+
+*This project is lovingly dedicated and named after my grandpa (Αμοιρίδης Αρχιμήδης), who bought me my first DMG Game Boy. His gift sparked a lifelong passion for gaming and technology that ultimately led to the creation of Archimedes. Thank you, Grandpa, for setting me on this path.*
